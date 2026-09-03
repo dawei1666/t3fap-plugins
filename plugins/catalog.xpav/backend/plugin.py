@@ -38,7 +38,7 @@ CATEGORY_URLS = {
 class MadouCatalogPlugin(BasePlugin, CatalogProvider):
     plugin_id = "catalog.xpav"
     plugin_name = "麻豆社"
-    plugin_version = "0.2.1"
+    plugin_version = "0.2.2"
 
     def health(self, ctx: dict[str, Any]) -> HealthReport:
         return HealthReport(status="ok", message="麻豆社 catalog plugin is ready.")
@@ -159,13 +159,24 @@ class MadouCatalogPlugin(BasePlugin, CatalogProvider):
         return results
 
     def _resolve_play_url(self, detail_html: str, detail_url: str) -> str:
-        iframe = self._first_attr(detail_html, r"<iframe\b[^>]*src=[\"']?([^\"' >]+)")
+        iframe = self._first_attr(
+            detail_html,
+            r"<iframe\b[^>]*(?:src|data-src)\s*=\s*[\"']?([^\"' >]+)",
+        )
         if not iframe:
             return ""
         iframe_url = urljoin(detail_url, html.unescape(iframe))
         player_html = fetch_text(iframe_url, headers={**HEADERS, "Referer": detail_url})
-        token_match = re.search(r"var\s+token\s*=\s*[\"']([^\"']+)[\"']", player_html)
-        m3u8_match = re.search(r"var\s+m3u8\s*=\s*[\"']([^\"']+)[\"']", player_html)
+        token_match = re.search(
+            r"(?:var|let|const)\s+token\s*=\s*[\"']([^\"']+)[\"']",
+            player_html,
+            re.IGNORECASE,
+        )
+        m3u8_match = re.search(
+            r"(?:var|let|const)\s+m3u8\s*=\s*[\"']([^\"']+)[\"']",
+            player_html,
+            re.IGNORECASE,
+        )
         if not token_match or not m3u8_match:
             return ""
         stream_url = urljoin(iframe_url, m3u8_match.group(1))
