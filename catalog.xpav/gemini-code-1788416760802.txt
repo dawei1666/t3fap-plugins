@@ -1,0 +1,5 @@
+catalog.xpav/
+├── plugin.json
+└── backend/
+    ├── __init__.py   <-- 空文件即可
+    └── plugin.py
