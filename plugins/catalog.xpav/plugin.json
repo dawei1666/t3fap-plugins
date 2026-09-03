@@ -1,7 +1,7 @@
 {
   "id": "catalog.xpav",
   "name": "麻豆社",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "category": "catalog",
   "description": "麻豆社网页影视源，支持分类、搜索、详情和动态 m3u8 播放地址。",
   "core_version": ">=1.0.0 <2.0.0",
@@ -16,6 +16,7 @@
     "network"
   ],
   "dependencies": [],
+  "config_schema": [],
   "resource": {
     "source_label": "麻豆社",
     "source_group": "catalog",
