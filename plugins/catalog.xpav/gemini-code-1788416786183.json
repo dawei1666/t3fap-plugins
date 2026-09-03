@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "category": "catalog",
   "description": "自定义导入的 XPTV / MacCMS 影视源。",
-  "core_version": ">=1.0.0 <2.0.0",
+  "core_version": ">=1.0.0 <3.0.0",
   "contract_version": "1.0",
   "capabilities": [
     "resource.catalog"
