@@ -38,7 +38,7 @@ CATEGORY_URLS = {
 class MadouCatalogPlugin(BasePlugin, CatalogProvider):
     plugin_id = "catalog.xpav"
     plugin_name = "麻豆社"
-    plugin_version = "0.2.0"
+    plugin_version = "0.2.1"
 
     def health(self, ctx: dict[str, Any]) -> HealthReport:
         return HealthReport(status="ok", message="麻豆社 catalog plugin is ready.")
