@@ -1,0 +1,38 @@
+{
+  "id": "catalog.xpav",
+  "name": "XPAV资源库",
+  "version": "0.1.0",
+  "category": "catalog",
+  "description": "自定义导入的 XPTV / MacCMS 影视源。",
+  "core_version": ">=1.0.0 <2.0.0",
+  "contract_version": "1.0",
+  "capabilities": [
+    "resource.catalog"
+  ],
+  "backend": {
+    "entry": "backend.plugin:plugin"
+  },
+  "permissions": [
+    "network"
+  ],
+  "dependencies": [],
+  "resource": {
+    "source_label": "XPAV",
+    "source_group": "catalog",
+    "supported_media_types": [
+      "movie",
+      "tv",
+      "variety",
+      "anime"
+    ],
+    "target_types": [
+      "official"
+    ],
+    "priority": 50
+  },
+  "ui": {
+    "menus": [],
+    "settings_sections": [],
+    "task_templates": []
+  }
+}
